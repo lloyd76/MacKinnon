@@ -99,10 +99,12 @@
             background-color: #e8e4c0;
         }
         .mobile-menu-btn {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+    position: absolute;
+    right: 1rem; /* Push it 1rem (16px) from the right */
+    top: 1rem;   /* (optional) Move it a little down */
+    transform: none; /* Remove the translateX(-50%) */
+}
+        
         .hidden-content {
             display: none;
         }
