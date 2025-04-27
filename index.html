@@ -1,0 +1,871 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DM MacKinnon Solicitors | Oban, Argyll</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-green': '#20511b',
+                        'light-cream': '#f7f3c5',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .section {
+            scroll-margin-top: 100px;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #20511b;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .active-nav::after {
+            width: 100%;
+        }
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1517502884422-41eaead166d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .team-member:hover .team-overlay {
+            opacity: 1;
+        }
+        .team-overlay {
+            transition: opacity 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        .news-card {
+            transition: all 0.3s ease;
+        }
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        .logo-container {
+            background-color: #f7f3c5;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .logo-text {
+            font-family: 'Georgia', serif;
+            color: #20511b;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .btn-primary {
+            background-color: #20511b;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #163a12;
+        }
+        .btn-secondary {
+            background-color: #f7f3c5;
+            color: #20511b;
+        }
+        .btn-secondary:hover {
+            background-color: #e8e4c0;
+        }
+        .mobile-menu-btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .hidden-content {
+            display: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
+    <!-- Mobile Menu Button -->
+    <div class="lg:hidden fixed top-4 z-50 w-full px-4">
+        <div class="flex justify-between items-center">
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/40" alt="DM MacKinnon Logo" class="h-10">
+                <span class="logo-text">DM MacKinnon</span>
+            </div>
+            <button id="mobileMenuButton" class="bg-dark-green text-white p-3 rounded-full shadow-lg mobile-menu-btn">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-dark-green text-light-cream z-40 p-8 flex flex-col items-center justify-center space-y-8">
+        <button id="closeMenuButton" class="absolute top-4 right-4 text-2xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#home" class="nav-link text-2xl font-medium" onclick="closeMobileMenu()">Home</a>
+        <a href="#about" class="nav-link text-2xl font-medium" onclick="closeMobileMenu()">About Us</a>
+        <a href="#people" class="nav-link text-2xl font-medium" onclick="closeMobileMenu()">Our People</a>
+        <a href="#services" class="nav-link text-2xl font-medium" onclick="closeMobileMenu()">Services</a>
+        <a href="#news" class="nav-link text-2xl font-medium" onclick="closeMobileMenu()">News</a>
+        <a href="#contact" class="nav-link text-2xl font-medium" onclick="closeMobileMenu()">Contact</a>
+        <div class="mt-8 flex space-x-4">
+            <a href="tel:01631563014" class="bg-light-cream text-dark-green px-6 py-3 rounded-full font-medium flex items-center">
+                <i class="fas fa-phone mr-2"></i> 01631 563014
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-30">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="#home" class="logo-container">
+                        <img src="https://via.placeholder.com/40" alt="DM MacKinnon Logo" class="h-10">
+                        <span class="logo-text">DM MacKinnon</span>
+                    </a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-dark-green font-medium">Home</a>
+                    <a href="#about" class="nav-link text-dark-green font-medium">About Us</a>
+                    <a href="#people" class="nav-link text-dark-green font-medium">Our People</a>
+                    <a href="#services" class="nav-link text-dark-green font-medium">Services</a>
+                    <a href="#news" class="nav-link text-dark-green font-medium">News</a>
+                    <a href="#contact" class="nav-link text-dark-green font-medium">Contact</a>
+                    <a href="tel:01631563014" class="btn-primary px-6 py-2 rounded-full font-medium flex items-center">
+                        <i class="fas fa-phone mr-2"></i> 01631 563014
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="section hero min-h-screen flex items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Expert Legal Services in Oban, Argyll</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Serving the West Highlands and Islands with professional legal advice for over 30 years.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="btn-secondary px-8 py-4 rounded-full font-bold text-lg transition">Contact Us</a>
+                <a href="#services" class="bg-transparent border-2 border-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-dark-green transition">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-light-cream py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-green mb-4">About Our Firm</h2>
+                <div class="w-24 h-1 bg-dark-green mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                    D M MacKinnon Solicitors is a long established firm based in Oban, Argyll, serving primarily the West Highlands and Islands but also with a client base extending throughout Scotland.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-green mb-6">Our Expertise</h3>
+                    <p class="text-gray-700 mb-6">
+                        Our firm has wide ranging expertise and offers our clients the best possible advice on a broad range of matters including residential and commercial conveyancing, rural property, partnerships and small businesses, Employment Law and small businesses, Wills, Powers of Attorney, Trusts and Executries, criminal defence work, residential and commercial leases, amongst others.
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        Our philosophy is to offer all our clients the very best service and to provide sound professional advice based on an informed and creative analysis of our clients' particular requirements.
+                    </p>
+                    <p class="text-gray-700">
+                        Should advice be required by our clients in areas more specific than those we provide, we can offer links with counsel, specialist city firms of solicitors, accountants, surveyors and tax experts.
+                    </p>
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Law books" class="w-full h-auto">
+                    <div class="absolute inset-0 bg-dark-green bg-opacity-30 flex items-center justify-center">
+                        <div class="text-white text-center p-6">
+                            <i class="fas fa-balance-scale text-5xl mb-4"></i>
+                            <h3 class="text-2xl font-bold">Established Legal Expertise</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our People Section -->
+    <section id="people" class="section bg-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-green mb-4">Our People</h2>
+                <div class="w-24 h-1 bg-dark-green mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    All of our partners and staff are supported by a full compliment of clerical and other administrative staff.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="teamMembers">
+                <!-- Partner 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Louise Fraser" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-dark-green bg-opacity-0 hover:bg-opacity-30 flex items-center justify-center team-overlay opacity-0">
+                            <div class="text-white text-center">
+                                <h3 class="text-xl font-bold">Partner</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark-green mb-2">Louise Fraser</h3>
+                        <p class="text-gray-600 mb-4">
+                            Louise deals mainly with Wills, Trusts and Executries, elderly client advice and employment law matters.
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Wills</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Trusts</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Employment Law</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partner 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Sally Orr" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-dark-green bg-opacity-0 hover:bg-opacity-30 flex items-center justify-center team-overlay opacity-0">
+                            <div class="text-white text-center">
+                                <h3 class="text-xl font-bold">Partner</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark-green mb-2">Sally Orr</h3>
+                        <p class="text-gray-600 mb-4">
+                            Sally specialises in residential and commercial conveyancing.
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Residential</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Commercial</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Conveyancing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partner 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Liam McDermid" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-dark-green bg-opacity-0 hover:bg-opacity-30 flex items-center justify-center team-overlay opacity-0">
+                            <div class="text-white text-center">
+                                <h3 class="text-xl font-bold">Partner</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark-green mb-2">Liam McDermid</h3>
+                        <p class="text-gray-600 mb-4">
+                            Liam has focused on residential and commercial conveyancing and leasing transactions.
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Residential</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Commercial</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Leasing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Team Members (Hidden by default) -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hidden-content">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="John MacLeod" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-dark-green bg-opacity-0 hover:bg-opacity-30 flex items-center justify-center team-overlay opacity-0">
+                            <div class="text-white text-center">
+                                <h3 class="text-xl font-bold">Associate</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark-green mb-2">John MacLeod</h3>
+                        <p class="text-gray-600 mb-4">
+                            John specializes in criminal defense and has extensive experience in court representation.
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Criminal Law</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Court</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Defense</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hidden-content">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Fiona Campbell" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-dark-green bg-opacity-0 hover:bg-opacity-30 flex items-center justify-center team-overlay opacity-0">
+                            <div class="text-white text-center">
+                                <h3 class="text-xl font-bold">Associate</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark-green mb-2">Fiona Campbell</h3>
+                        <p class="text-gray-600 mb-4">
+                            Fiona focuses on family law, including divorce, child custody, and adoption cases.
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Family Law</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Divorce</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Child Custody</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hidden-content">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Ewan MacGregor" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-dark-green bg-opacity-0 hover:bg-opacity-30 flex items-center justify-center team-overlay opacity-0">
+                            <div class="text-white text-center">
+                                <h3 class="text-xl font-bold">Associate</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark-green mb-2">Ewan MacGregor</h3>
+                        <p class="text-gray-600 mb-4">
+                            Ewan specializes in rural property law and crofting matters, with deep knowledge of local land issues.
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Rural Property</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Crofting</span>
+                            <span class="bg-light-cream text-dark-green text-xs px-3 py-1 rounded-full">Land Law</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button id="viewAllTeam" class="btn-primary text-white px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition">
+                    View All Team Members
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section bg-light-cream py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-green mb-4">Our Services</h2>
+                <div class="w-24 h-1 bg-dark-green mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                    Comprehensive legal services tailored to meet your individual needs.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6">
+                    <div class="text-dark-green mb-4">
+                        <i class="fas fa-home text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-green mb-3">Conveyancing</h3>
+                    <p class="text-gray-700 mb-4">
+                        D M MacKinnon has a wealth of experience in all aspects of residential conveyancing, which in Argyll encompasses acting for clients in buying and selling a broad range of properties from unserviced plots to castles, flats to farms.
+                    </p>
+                    <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6">
+                    <div class="text-dark-green mb-4">
+                        <i class="fas fa-file-contract text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-green mb-3">Wills, Trusts & Executries</h3>
+                    <p class="text-gray-700 mb-4">
+                        We provide expert advice on all aspects of will drafting, trust creation and administration, and the winding up of estates (executries).
+                    </p>
+                    <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6">
+                    <div class="text-dark-green mb-4">
+                        <i class="fas fa-briefcase text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-green mb-3">Employment Law</h3>
+                    <p class="text-gray-700 mb-4">
+                        Our dedicated Employment team has extensive experience advising both employers and employees on all aspects of employment law.
+                    </p>
+                    <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6">
+                    <div class="text-dark-green mb-4">
+                        <i class="fas fa-gavel text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-green mb-3">Criminal Defence</h3>
+                    <p class="text-gray-700 mb-4">
+                        Criminal advice and appointments available 24/7. We deal with all types of criminal case from road traffic to more serious offences.
+                    </p>
+                    <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6">
+                    <div class="text-dark-green mb-4">
+                        <i class="fas fa-building text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-green mb-3">Residential & Commercial Leases</h3>
+                    <p class="text-gray-700 mb-4">
+                        Expert advice on all aspects of residential and commercial leasing, ensuring your rights and obligations are clearly defined.
+                    </p>
+                    <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6">
+                    <div class="text-dark-green mb-4">
+                        <i class="fas fa-tractor text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-green mb-3">Crofting</h3>
+                    <p class="text-gray-700 mb-4">
+                        Specialized legal services for crofters, including croft registration, transfers, and all other crofting matters.
+                    </p>
+                    <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="section bg-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-green mb-4">Latest News</h2>
+                <div class="w-24 h-1 bg-dark-green mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Stay updated with our latest happenings and announcements.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="newsItems">
+                <!-- News 1 -->
+                <div class="news-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="New Appointment" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-dark-green text-sm mb-2">25 Nov 2024</div>
+                        <h3 class="text-xl font-bold text-dark-green mb-3">New Appointment: Sorley Henderson</h3>
+                        <p class="text-gray-600 mb-4">
+                            We wish to announce the appointment of Sorley Henderson, with effect from 25th November 2024. Sorley brings with him a wealth of experience with over 35 years practising as a Solicitor across the west coast and islands.
+                        </p>
+                        <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- News 2 -->
+                <div class="news-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1586&q=80" alt="Will Aid" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-dark-green text-sm mb-2">Current</div>
+                        <h3 class="text-xl font-bold text-dark-green mb-3">Supporting Will Aid</h3>
+                        <p class="text-gray-600 mb-4">
+                            DM MacKinnon Solicitors of Oban has pledged its support to seven charities by signing up to an annual Will-writing campaign. The firm has raised £14,039 for Will Aid since it first took part.
+                        </p>
+                        <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- News 3 -->
+                <div class="news-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Retirement" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-dark-green text-sm mb-2">1 Aug 2024</div>
+                        <h3 class="text-xl font-bold text-dark-green mb-3">Retirement Announcement</h3>
+                        <p class="text-gray-600 mb-4">
+                            We wish to announce the retirement of Alan Manson, Partner, with effect from 1st August 2024. Alan has been a stalwart of DM MacKinnon for 30 years and will be missed by us all and by his many clients.
+                        </p>
+                        <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Additional News Items (Hidden by default) -->
+                <div class="news-card bg-white rounded-xl shadow-md overflow-hidden hidden-content">
+                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Office Expansion" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-dark-green text-sm mb-2">15 Jun 2024</div>
+                        <h3 class="text-xl font-bold text-dark-green mb-3">Office Expansion in Oban</h3>
+                        <p class="text-gray-600 mb-4">
+                            We're pleased to announce the expansion of our Oban office to better serve our growing client base. The new space includes additional meeting rooms and improved accessibility features.
+                        </p>
+                        <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-card bg-white rounded-xl shadow-md overflow-hidden hidden-content">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Legal Award" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-dark-green text-sm mb-2">3 May 2024</div>
+                        <h3 class="text-xl font-bold text-dark-green mb-3">Legal Excellence Award</h3>
+                        <p class="text-gray-600 mb-4">
+                            DM MacKinnon Solicitors has been awarded the Legal Excellence Award for Rural Property Law at the Scottish Legal Awards 2024, recognizing our outstanding work in this specialized field.
+                        </p>
+                        <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-card bg-white rounded-xl shadow-md overflow-hidden hidden-content">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Community Initiative" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-dark-green text-sm mb-2">12 Apr 2024</div>
+                        <h3 class="text-xl font-bold text-dark-green mb-3">New Community Legal Clinic</h3>
+                        <p class="text-gray-600 mb-4">
+                            Starting this month, we're launching a free monthly legal clinic to provide basic legal advice to members of our community who may not otherwise have access to legal services.
+                        </p>
+                        <a href="#contact" class="text-dark-green font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button id="viewAllNews" class="btn-primary text-white px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition">
+                    View All News
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light-cream py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-green mb-4">Contact Us</h2>
+                <div class="w-24 h-1 bg-dark-green mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                    Get in touch with our team for expert legal advice tailored to your needs.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white rounded-xl shadow-md p-8 mb-8">
+                        <h3 class="text-2xl font-bold text-dark-green mb-6">Our Office</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="text-dark-green mr-4 mt-1">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Bank of Scotland Buildings</p>
+                                    <p class="text-gray-700">Oban, Argyll PA34 4LN</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-dark-green mr-4">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <a href="tel:01631563014" class="text-gray-700 hover:text-dark-green">01631 563014</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-dark-green mr-4">
+                                    <i class="fas fa-fax"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-700">01631 566463</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-dark-green mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <a href="mailto:info@dmmk.co.uk" class="text-gray-700 hover:text-dark-green">info@dmmk.co.uk</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-dark-green mr-4">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-700">Monday to Friday: 9:00 AM - 5:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2239.123456789012!2d-5.4741234!3d56.4123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTbCsDI0JzQ0LjQiTiA1wrAyOCcyNS4zIlc!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white rounded-xl shadow-md p-8">
+                        <h3 class="text-2xl font-bold text-dark-green mb-6">Send Us a Message</h3>
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                                <select id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green focus:border-transparent">
+                                    <option value="">Select a subject</option>
+                                    <option value="conveyancing">Conveyancing</option>
+                                    <option value="wills">Wills & Trusts</option>
+                                    <option value="employment">Employment Law</option>
+                                    <option value="criminal">Criminal Defence</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green focus:border-transparent" required></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full btn-primary px-6 py-4 rounded-lg font-bold transition">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-green text-light-cream py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">DM MacKinnon</h3>
+                    <p class="mb-4">
+                        Solicitors & Notaries serving Oban, Argyll and the West Highlands since 1985.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-light-cream hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-light-cream hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-light-cream hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-white">Home</a></li>
+                        <li><a href="#about" class="hover:text-white">About Us</a></li>
+                        <li><a href="#people" class="hover:text-white">Our People</a></li>
+                        <li><a href="#services" class="hover:text-white">Services</a></li>
+                        <li><a href="#news" class="hover:text-white">News</a></li>
+                        <li><a href="#contact" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="hover:text-white">Conveyancing</a></li>
+                        <li><a href="#services" class="hover:text-white">Wills & Trusts</a></li>
+                        <li><a href="#services" class="hover:text-white">Employment Law</a></li>
+                        <li><a href="#services" class="hover:text-white">Criminal Defence</a></li>
+                        <li><a href="#services" class="hover:text-white">Leases</a></li>
+                        <li><a href="#services" class="hover:text-white">Crofting</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <address class="not-italic">
+                        <p class="mb-2">Bank of Scotland Buildings</p>
+                        <p class="mb-2">Oban, Argyll PA34 4LN</p>
+                        <p class="mb-2">Tel: <a href="tel:01631563014" class="hover:text-white">01631 563014</a></p>
+                        <p class="mb-2">Fax: 01631 566463</p>
+                        <p class="mb-2">Email: <a href="mailto:info@dmmk.co.uk" class="hover:text-white">info@dmmk.co.uk</a></p>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="border-t border-light-cream border-opacity-20 mt-12 pt-8 text-center text-sm">
+                <p>&copy; 2023 DM MacKinnon Solicitors. All rights reserved.</p>
+                <p class="mt-2">Solicitors & Notaries Public | Registered in Scotland</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active-nav');
+                    });
+                    this.classList.add('active-nav');
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const closeMenuButton = document.getElementById('closeMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+        
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+        }
+        
+        // Highlight active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (pageYOffset >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // Here you would typically send the form data to a server
+                // For this example, we'll just show an alert
+                alert(`Thank you, ${name}! Your message has been received. We'll get back to you soon.`);
+                
+                // Reset form
+                contactForm.reset();
+            });
+        }
+        
+        // View All Team Members functionality
+        const viewAllTeamBtn = document.getElementById('viewAllTeam');
+        if (viewAllTeamBtn) {
+            viewAllTeamBtn.addEventListener('click', function() {
+                const hiddenTeamMembers = document.querySelectorAll('#teamMembers .hidden-content');
+                
+                hiddenTeamMembers.forEach(member => {
+                    member.classList.toggle('hidden-content');
+                    member.style.display = member.style.display === 'none' ? 'block' : 'none';
+                });
+                
+                this.textContent = this.textContent.includes('All') ? 
+                    'Show Less Team Members' : 'View All Team Members';
+            });
+        }
+        
+        // View All News functionality
+        const viewAllNewsBtn = document.getElementById('viewAllNews');
+        if (viewAllNewsBtn) {
+            viewAllNewsBtn.addEventListener('click', function() {
+                const hiddenNewsItems = document.querySelectorAll('#newsItems .hidden-content');
+                
+                hiddenNewsItems.forEach(news => {
+                    news.classList.toggle('hidden-content');
+                    news.style.display = news.style.display === 'none' ? 'block' : 'none';
+                });
+                
+                this.textContent = this.textContent.includes('All') ? 
+                    'Show Less News' : 'View All News';
+            });
+        }
+    </script>
+</body>
+</html>
